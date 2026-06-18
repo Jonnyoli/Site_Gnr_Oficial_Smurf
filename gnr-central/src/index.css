@@ -1,0 +1,2117 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* =========================
+   GNR CENTRAL — THEME
+   ========================= */
+
+:root,
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.06);
+
+  --opaque-button-border-intensity: 9;
+
+  --elevate-1: rgba(255, 255, 255, 0.045);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  /* GNR Premium Palette */
+  --background: 154 42% 4%;
+  --foreground: 160 18% 96%;
+
+  --border: 154 22% 18%;
+
+  --card: 154 34% 7%;
+  --card-foreground: 160 18% 96%;
+  --card-border: 154 22% 18%;
+
+  --sidebar: 154 42% 4%;
+  --sidebar-foreground: 160 18% 96%;
+  --sidebar-border: 154 22% 16%;
+
+  --sidebar-primary: 151 86% 45%;
+  --sidebar-primary-foreground: 154 70% 5%;
+  --sidebar-accent: 43 92% 56%;
+  --sidebar-accent-foreground: 154 70% 5%;
+  --sidebar-ring: 151 86% 45%;
+
+  --popover: 154 34% 7%;
+  --popover-foreground: 160 18% 96%;
+  --popover-border: 154 22% 18%;
+
+  --primary: 151 86% 45%;
+  --primary-foreground: 154 70% 5%;
+
+  --secondary: 154 22% 13%;
+  --secondary-foreground: 160 18% 96%;
+
+  --muted: 154 18% 15%;
+  --muted-foreground: 156 8% 62%;
+
+  --accent: 43 92% 56%;
+  --accent-foreground: 154 70% 5%;
+
+  --destructive: 0 78% 58%;
+  --destructive-foreground: 0 0% 98%;
+
+  --input: 154 22% 18%;
+  --ring: 151 86% 45%;
+
+  --chart-1: 151 86% 45%;
+  --chart-2: 43 92% 56%;
+  --chart-3: 0 78% 58%;
+  --chart-4: 199 89% 58%;
+  --chart-5: 267 84% 68%;
+
+  --radius: 0.95rem;
+
+  --shadow-glow: 0 0 24px 0px hsla(151, 86%, 45%, 0.18);
+  --shadow-gold: 0 0 24px 0px hsla(43, 92%, 56%, 0.16);
+
+  /* Automatically computed borders */
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+/* =========================
+   BASE
+   ========================= */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  html {
+    background: #020605;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    margin: 0;
+    min-height: 100%;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: geometricPrecision;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.28);
+    color: white;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    outline-color: hsl(var(--primary) / 0.45);
+  }
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input,
+  textarea,
+  select {
+    color-scheme: dark;
+  }
+
+  img {
+    user-select: none;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  [data-radix-popper-content-wrapper] {
+    z-index: 80 !important;
+  }
+}
+
+/* =========================
+   SCROLLBAR
+   ========================= */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.35) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary) / 0.55),
+    hsl(var(--accent) / 0.28)
+  );
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary) / 0.82),
+    hsl(var(--accent) / 0.48)
+  );
+  background-clip: padding-box;
+}
+
+/* =========================
+   PREMIUM UTILITIES
+   ========================= */
+
+@layer utilities {
+  .stat-card-glow {
+    position: relative;
+  }
+
+  .stat-card-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.22),
+      transparent 45%,
+      hsl(var(--accent) / 0.14)
+    );
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .stat-card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .glass {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.075),
+        rgba(255, 255, 255, 0.025)
+      ),
+      rgba(5, 14, 11, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.085);
+    box-shadow:
+      0 24px 80px rgba(0, 0, 0, 0.32),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(22px);
+  }
+
+  .glass-soft {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.018)
+      ),
+      rgba(5, 14, 11, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    box-shadow:
+      0 18px 60px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+  }
+
+	.portal-card {
+	  background:
+		linear-gradient(
+		  135deg,
+		  rgba(255, 255, 255, 0.075),
+		  rgba(255, 255, 255, 0.025)
+		),
+		rgba(5, 14, 11, 0.72);
+	  border: 1px solid rgba(255, 255, 255, 0.085);
+	  border-radius: 1.5rem;
+	  box-shadow:
+		0 24px 80px rgba(0, 0, 0, 0.32),
+		inset 0 1px 0 rgba(255, 255, 255, 0.08);
+	  backdrop-filter: blur(22px);
+	  transition:
+		border-color 0.3s ease,
+		box-shadow 0.3s ease,
+		transform 0.3s ease,
+		background 0.3s ease;
+	}
+
+  .portal-card:hover {
+    border-color: hsl(var(--primary) / 0.25);
+    box-shadow:
+      0 30px 100px rgba(0, 0, 0, 0.42),
+      0 0 38px hsl(var(--primary) / 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .portal-panel {
+    @apply rounded-[2rem] border border-white/10 bg-[#050b09]/80 shadow-[0_28px_120px_rgba(0,0,0,0.42)] backdrop-blur-2xl;
+  }
+
+  .portal-input {
+    @apply rounded-2xl border border-white/10 bg-black/25 text-white placeholder:text-muted-foreground transition-all;
+  }
+
+  .portal-input:focus {
+    border-color: hsl(var(--primary) / 0.35);
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.08);
+  }
+
+  .premium-border {
+    position: relative;
+  }
+
+  .premium-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.42),
+      rgba(255, 255, 255, 0.08),
+      hsl(var(--accent) / 0.28)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .neon-text {
+    text-shadow:
+      0 0 18px hsl(var(--primary) / 0.28),
+      0 0 38px hsl(var(--primary) / 0.12);
+  }
+
+  .neon-border {
+    box-shadow:
+      0 0 18px hsl(var(--primary) / 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .gold-text {
+    color: hsl(var(--accent));
+    text-shadow:
+      0 0 18px hsl(var(--accent) / 0.22),
+      0 0 38px hsl(var(--accent) / 0.10);
+  }
+
+  .portal-gradient-text {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary)),
+      #eafff5,
+      hsl(var(--accent))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glow-primary {
+    box-shadow:
+      0 0 24px hsl(var(--primary) / 0.18),
+      0 0 80px hsl(var(--primary) / 0.08);
+  }
+
+  .glow-accent {
+    box-shadow:
+      0 0 24px hsl(var(--accent) / 0.18),
+      0 0 80px hsl(var(--accent) / 0.08);
+  }
+
+  .cyber-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .cyber-grid-soft {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .scanline {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(16, 185, 129, 0.035) 50%,
+      transparent 100%
+    );
+    animation: scanline-move 7s linear infinite;
+    mix-blend-mode: screen;
+  }
+
+  .noise {
+    position: relative;
+  }
+
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image:
+      radial-gradient(circle at 25% 25%, white 0.6px, transparent 0.6px),
+      radial-gradient(circle at 75% 75%, white 0.5px, transparent 0.5px);
+    background-size: 26px 26px;
+    mix-blend-mode: screen;
+  }
+
+  .status-dot {
+    position: relative;
+    display: inline-flex;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 999px;
+    background: hsl(var(--primary));
+    box-shadow: 0 0 12px hsl(var(--primary) / 0.8);
+  }
+
+  .status-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: inherit;
+    animation: ping-soft 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .btn-premium {
+    @apply rounded-2xl bg-primary px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-primary-foreground transition-all;
+    box-shadow:
+      0 18px 50px hsl(var(--primary) / 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  }
+
+  .btn-premium:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 24px 70px hsl(var(--primary) / 0.30),
+      inset 0 1px 0 rgba(255, 255, 255, 0.20);
+  }
+
+  .btn-ghost-premium {
+    @apply rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-muted-foreground transition-all;
+  }
+
+  .btn-ghost-premium:hover {
+    @apply bg-white/[0.065] text-white;
+    border-color: hsl(var(--primary) / 0.22);
+  }
+
+  .badge-premium {
+    @apply inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-primary;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-accent;
+  }
+
+  .table-premium {
+    @apply overflow-hidden rounded-3xl border border-white/10 bg-[#050b09]/70 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur-xl;
+  }
+
+  .divider-glow {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.35),
+      transparent
+    );
+  }
+}
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+@keyframes scanline-move {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 0.24;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes ping-soft {
+  75%,
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+    filter: blur(26px);
+  }
+
+  50% {
+    opacity: 1;
+    filter: blur(34px);
+  }
+}
+
+@keyframes shimmer-x {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.float-soft {
+  animation: float-soft 5.5s ease-in-out infinite;
+}
+
+.glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.shimmer-x {
+  animation: shimmer-x 2.4s ease-in-out infinite;
+}
+
+/* =========================
+   PRINT
+   ========================= */
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .glass,
+  .glass-soft,
+  .portal-card,
+  .portal-panel {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    backdrop-filter: none !important;
+  }
+
+  .scanline,
+  .cyber-grid,
+  .cyber-grid-soft {
+    display: none !important;
+  }
+}
+@import "./components/theme/site-themes.css";
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V1
+   Estrutura institucional inspirada em portais policiais,
+   mantendo identidade própria da Central GNR.
+   ========================================================= */
+
+:root {
+  --portal-sidebar: 286px;
+  --portal-topbar: 72px;
+  --portal-panel: rgba(42, 49, 49, 0.94);
+  --portal-panel-soft: rgba(28, 34, 34, 0.92);
+  --portal-surface: #171b1e;
+  --portal-line: rgba(255, 255, 255, 0.085);
+  --portal-gold: #e5c43f;
+}
+
+.portal-shell {
+  background:
+    radial-gradient(circle at 72% 0%, rgba(16, 185, 129, 0.065), transparent 30%),
+    linear-gradient(135deg, #161a1e 0%, #111518 52%, #171a1d 100%);
+}
+
+.portal-sidebar {
+  background:
+    linear-gradient(180deg, rgba(31, 37, 38, 0.985), rgba(20, 24, 27, 0.99)) !important;
+  border-right-color: rgba(255,255,255,.075) !important;
+  box-shadow:
+    8px 0 40px rgba(0, 0, 0, .38),
+    inset -1px 0 rgba(255,255,255,.025) !important;
+}
+
+.portal-brand {
+  min-height: 82px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.035), transparent 58%),
+    rgba(51, 59, 60, .74);
+}
+
+.portal-brand::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(229,196,63,.35), transparent);
+}
+
+.portal-navigation {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(229,196,63,.28) transparent;
+}
+
+.portal-navigation::-webkit-scrollbar {
+  width: 5px;
+}
+
+.portal-navigation::-webkit-scrollbar-thumb {
+  background: rgba(229,196,63,.25);
+  border-radius: 999px;
+}
+
+.portal-nav-link {
+  min-height: 43px;
+  border: 1px solid transparent;
+  border-radius: 10px !important;
+}
+
+.portal-nav-link:hover {
+  border-color: rgba(255,255,255,.06);
+  background: rgba(255,255,255,.045) !important;
+  transform: translateX(2px);
+}
+
+.portal-nav-link[aria-current="page"],
+.portal-nav-link:has(.bg-primary\/10) {
+  background:
+    linear-gradient(90deg, rgba(16,185,129,.15), rgba(16,185,129,.035)) !important;
+}
+
+.portal-nav-icon {
+  border-radius: 9px !important;
+  background: rgba(0,0,0,.2) !important;
+}
+
+.portal-nav-link:hover .portal-nav-icon {
+  border-color: rgba(229,196,63,.2) !important;
+  color: var(--portal-gold) !important;
+}
+
+.portal-topbar {
+  background:
+    linear-gradient(90deg, rgba(54,63,64,.96), rgba(42,49,50,.96)) !important;
+  border-bottom-color: rgba(255,255,255,.09) !important;
+  box-shadow: 0 9px 28px rgba(0,0,0,.22);
+}
+
+.portal-main {
+  background:
+    radial-gradient(circle at 52% 0%, rgba(255,255,255,.025), transparent 32%),
+    linear-gradient(145deg, #1b1e22, #15181c 55%, #1a1d20);
+}
+
+.portal-content {
+  background:
+    linear-gradient(rgba(22,25,29,.9), rgba(22,25,29,.9)),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,.012) 0,
+      rgba(255,255,255,.012) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+}
+
+.portal-page {
+  min-height: 100%;
+}
+
+/* Home */
+.portal-home-page > section,
+.portal-home-page article {
+  border-color: rgba(255,255,255,.085);
+}
+
+.portal-home-hero {
+  border-radius: 18px !important;
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.48),
+    inset 0 1px rgba(255,255,255,.06) !important;
+}
+
+.portal-home-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(229,196,63,.12);
+  border-radius: inherit;
+}
+
+.portal-home-grid > * {
+  border-radius: 16px !important;
+}
+
+/* Profile — dossier oficial */
+.portal-profile-page {
+  --profile-gold: #e6c83d;
+}
+
+.portal-profile-card {
+  border-radius: 18px !important;
+  background: rgba(42, 50, 51, .96) !important;
+  border-color: rgba(255,255,255,.1) !important;
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.46),
+    inset 0 1px rgba(255,255,255,.055) !important;
+}
+
+.portal-profile-card > img {
+  height: 255px !important;
+  object-position: center 36%;
+  filter: saturate(.88) contrast(1.06);
+}
+
+.portal-profile-card > .absolute.inset-0 {
+  pointer-events: none;
+}
+
+.portal-profile-ribbon {
+  min-height: 60px;
+  background: rgba(55, 64, 65, .86);
+  backdrop-filter: blur(14px);
+}
+
+.portal-profile-ribbon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--profile-gold), rgba(16,185,129,.7), transparent 78%);
+}
+
+.portal-profile-body {
+  padding-top: 34px !important;
+}
+
+.portal-profile-identity {
+  align-items: center;
+}
+
+.portal-profile-avatar {
+  filter: drop-shadow(0 20px 35px rgba(0,0,0,.45));
+}
+
+.portal-profile-meta h1 {
+  text-transform: uppercase;
+  letter-spacing: -.035em;
+  text-shadow: 0 3px 18px rgba(0,0,0,.45);
+}
+
+.portal-profile-page section:not(#perfil-resumo) {
+  border-radius: 16px !important;
+  background-color: rgba(43, 50, 51, .84);
+  border-color: rgba(255,255,255,.085);
+}
+
+.portal-profile-page button,
+.portal-profile-page a {
+  transition:
+    background-color .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+.portal-profile-page button:hover,
+.portal-profile-page a:hover {
+  transform: translateY(-1px);
+}
+
+/* Cards and common elements */
+.portal-page .rounded-\[2\.4rem\],
+.portal-page .rounded-\[2\.25rem\],
+.portal-page .rounded-\[2\.3rem\] {
+  border-radius: 16px !important;
+}
+
+.portal-page input,
+.portal-page textarea,
+.portal-page select {
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .portal-topbar {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .portal-home-hero {
+    min-height: 520px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .portal-sidebar {
+    box-shadow: 18px 0 65px rgba(0,0,0,.62) !important;
+  }
+
+  .portal-profile-card > img {
+    height: 210px !important;
+  }
+
+  .portal-profile-body {
+    padding: 20px !important;
+  }
+}
+
+/* Reduce visual noise but keep accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .portal-nav-link,
+  .portal-profile-page button,
+  .portal-profile-page a {
+    transition: none !important;
+  }
+}
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V2
+   ========================================================= */
+
+.portal-section-button {
+  min-height: 58px;
+}
+
+.portal-navigation > div > div {
+  transition:
+    border-color .25s ease,
+    background-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.portal-navigation > div > div:has(.portal-nav-link[aria-current="page"]) {
+  border-color: hsl(var(--primary) / .18) !important;
+  background: hsl(var(--primary) / .025) !important;
+  box-shadow: inset 3px 0 hsl(var(--primary) / .55);
+}
+
+/* Guarda Perfil V2 */
+.profile-dossier-shell {
+  background:
+    linear-gradient(180deg, #2b3434 0%, #242c2c 100%);
+}
+
+.profile-cover {
+  background: #060908;
+}
+
+.profile-cover img {
+  filter: saturate(.9) contrast(1.05);
+}
+
+.profile-cover-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.profile-main-band {
+  background:
+    radial-gradient(circle at 80% 0%, hsl(var(--primary) / .07), transparent 32%),
+    linear-gradient(180deg, rgba(42,51,51,.98), rgba(34,41,41,.99));
+}
+
+.profile-square-avatar > div:nth-child(2) {
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.profile-square-avatar:hover > div:nth-child(2) {
+  transform: translateY(-2px);
+  border-color: hsl(var(--primary) / .45);
+}
+
+.profile-summary-strip > div {
+  border-radius: 0 !important;
+  border-width: 0 !important;
+  border-right: 1px solid rgba(255,255,255,.08) !important;
+  background: rgba(0,0,0,.18) !important;
+  padding: 22px !important;
+}
+
+.profile-summary-strip > div:last-child {
+  border-right: 0 !important;
+}
+
+.profile-dossier-shell .profile-main-band .grid > div {
+  border-radius: 14px !important;
+}
+
+.portal-profile-page section:not(#perfil-resumo) {
+  border-radius: 15px !important;
+  background:
+    linear-gradient(145deg, rgba(48,56,56,.88), rgba(35,41,41,.92)) !important;
+}
+
+@media (max-width: 1279px) {
+  .profile-summary-strip > div:nth-child(2) {
+    border-right: 0 !important;
+  }
+
+  .profile-summary-strip > div:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .profile-cover {
+    height: 210px !important;
+  }
+
+  .profile-square-avatar {
+    margin-top: -64px !important;
+  }
+
+  .profile-square-avatar > div:nth-child(2) {
+    height: 132px !important;
+    width: 132px !important;
+  }
+
+  .profile-summary-strip > div {
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  }
+
+  .profile-summary-strip > div:last-child {
+    border-bottom: 0 !important;
+  }
+}
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V3 — MENU EM DOIS NÍVEIS
+   ========================================================= */
+
+.portal-quick-link,
+.portal-area-tile {
+  isolation: isolate;
+}
+
+.portal-quick-link::after,
+.portal-area-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.035), transparent 42%);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.portal-quick-link:hover::after,
+.portal-area-tile:hover::after {
+  opacity: 1;
+}
+
+.portal-area-tile {
+  min-height: 112px;
+}
+
+.portal-area-collapsed {
+  box-shadow: inset 0 1px rgba(255,255,255,.025);
+}
+
+.portal-navigation .portal-nav-link {
+  min-height: 42px;
+}
+
+.portal-navigation .portal-nav-link[aria-current="page"] {
+  box-shadow:
+    inset 3px 0 hsl(var(--primary) / .72),
+    0 8px 28px rgba(0,0,0,.16);
+}
+
+.portal-navigation section header + div {
+  scrollbar-width: thin;
+}
+
+@media (max-height: 820px) {
+  .portal-area-tile {
+    min-height: 94px;
+  }
+
+  .portal-quick-link {
+    min-height: 62px !important;
+  }
+}
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V4 — DOSSIER OPERACIONAL
+   ========================================================= */
+
+.profile-v4-shell {
+  background:
+    linear-gradient(180deg, #242d2d 0%, #1d2424 100%);
+}
+
+.profile-v4-cover {
+  background: #050807;
+}
+
+.profile-v4-cover > img {
+  filter:
+    saturate(.88)
+    contrast(1.06)
+    brightness(.82);
+}
+
+.profile-v4-cover-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.profile-v4-avatar > div:nth-child(2) {
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.profile-v4-avatar:hover > div:nth-child(2) {
+  transform: translateY(-3px);
+  border-color: hsl(var(--primary) / .45);
+}
+
+.profile-v4-command {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.045),
+    0 22px 55px rgba(0,0,0,.24);
+}
+
+.profile-v4-data {
+  background:
+    radial-gradient(circle at 80% 0%, hsl(var(--primary) / .055), transparent 26%),
+    linear-gradient(180deg, rgba(39,48,48,.99), rgba(29,36,36,.99));
+}
+
+.profile-v4-intelligence {
+  min-height: 100%;
+}
+
+.profile-v4-strip > div {
+  border-radius: 0 !important;
+  border-width: 0 !important;
+  border-right: 1px solid rgba(255,255,255,.08) !important;
+  background: rgba(0,0,0,.18) !important;
+  padding: 21px !important;
+}
+
+.profile-v4-strip > div:last-child {
+  border-right: 0 !important;
+}
+
+@media (max-width: 1279px) {
+  .profile-v4-strip > div:nth-child(2n) {
+    border-right: 0 !important;
+  }
+
+  .profile-v4-strip > div {
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .profile-v4-cover {
+    min-height: 520px !important;
+  }
+
+  .profile-v4-cover > div:last-child {
+    position: relative !important;
+    inset: auto !important;
+    padding-top: 120px !important;
+  }
+
+  .profile-v4-avatar > div:nth-child(2) {
+    height: 138px !important;
+    width: 138px !important;
+  }
+
+  .profile-v4-strip > div {
+    border-right: 0 !important;
+  }
+}
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V4.1 — PROFILE CLEAN HERO
+   ========================================================= */
+
+.profile-v41-shell {
+  background: linear-gradient(180deg, #1d2424 0%, #161c1c 100%);
+}
+
+.profile-v41-banner {
+  min-height: 250px;
+  background: #070b0a;
+}
+
+.profile-v41-banner > img {
+  filter: saturate(.88) contrast(1.02) brightness(.78);
+}
+
+.profile-v41-cover-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.profile-v41-summary {
+  margin-top: -34px;
+  position: relative;
+  z-index: 12;
+}
+
+.profile-v41-summary-card {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.04),
+    0 30px 80px rgba(0,0,0,.30);
+}
+
+.profile-v41-avatar-wrap {
+  margin-top: -78px;
+}
+
+.profile-v41-avatar {
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.profile-v41-avatar:hover {
+  transform: translateY(-4px);
+  border-color: hsl(var(--primary) / .38);
+  box-shadow: 0 32px 90px rgba(0,0,0,.62);
+}
+
+.profile-v41-command {
+  box-shadow: inset 0 1px rgba(255,255,255,.035);
+}
+
+@media (max-width: 1279px) {
+  .profile-v41-summary {
+    margin-top: -22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile-v41-banner {
+    min-height: 215px;
+  }
+
+  .profile-v41-summary {
+    margin-top: -12px;
+  }
+
+  .profile-v41-avatar-wrap {
+    margin-top: -56px;
+  }
+}
+
+@media (max-width: 639px) {
+  .profile-v41-avatar {
+    height: 138px !important;
+    width: 138px !important;
+  }
+}
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V4.2 — HERO LIMPO DO PERFIL
+   ========================================================= */
+
+.profile-v42-shell {
+  background: linear-gradient(180deg, #1d2424 0%, #171d1d 100%);
+}
+
+.profile-v42-cover > img {
+  filter: saturate(.90) contrast(1.02) brightness(.76);
+}
+
+.profile-v42-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.profile-v42-identity,
+.profile-v42-operational {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.04),
+    0 24px 70px rgba(0,0,0,.28);
+}
+
+.profile-v42-avatar {
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.profile-v42-avatar:hover {
+  transform: translateY(-3px);
+  border-color: hsl(var(--primary) / .38);
+  box-shadow: 0 30px 90px rgba(0,0,0,.58);
+}
+
+@media (max-width: 1279px) {
+  .profile-v42-cover {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile-v42-cover {
+    min-height: 580px;
+  }
+
+  .profile-v42-avatar {
+    height: 132px !important;
+    width: 132px !important;
+  }
+}
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V4.3 — BANNER LIMPO + AVATAR DEPOIS
+   ========================================================= */
+
+.profile-v43-shell {
+  background: linear-gradient(180deg, #1d2424 0%, #171d1d 100%);
+}
+
+.profile-v43-cover > img {
+  filter: saturate(.92) contrast(1.02) brightness(.82);
+}
+
+.profile-v43-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.profile-v43-content {
+  margin-top: -8px;
+}
+
+.profile-v43-avatar-card,
+.profile-v43-identity-card,
+.profile-v43-operational {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.04),
+    0 24px 70px rgba(0,0,0,.28);
+}
+
+.profile-v43-avatar {
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.profile-v43-avatar:hover {
+  transform: translateY(-3px);
+  border-color: hsl(var(--primary) / .38);
+  box-shadow: 0 30px 90px rgba(0,0,0,.58);
+}
+
+@media (max-width: 1279px) {
+  .profile-v43-cover {
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile-v43-cover {
+    min-height: 250px;
+  }
+
+  .profile-v43-avatar {
+    height: 132px !important;
+    width: 132px !important;
+  }
+}
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V5 — LAYOUT REFINADO
+   ========================================================= */
+
+.portal-sidebar {
+  background:
+    radial-gradient(circle at 20% 0%, hsl(var(--primary) / .07), transparent 25%),
+    linear-gradient(180deg, rgba(24,32,30,.99), rgba(10,15,14,.995)) !important;
+}
+
+.portal-brand-v5 {
+  min-height: 84px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.045), transparent 55%),
+    linear-gradient(180deg, rgba(43,55,51,.88), rgba(24,33,30,.82));
+}
+
+.portal-navigation-v5 {
+  padding-top: 16px !important;
+  padding-bottom: 18px !important;
+}
+
+.portal-navigation-v5 .portal-quick-link,
+.portal-navigation-v5 .portal-area-tile,
+.portal-navigation-v5 .portal-selected-area {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.025),
+    0 14px 34px rgba(0,0,0,.12);
+}
+
+.portal-navigation-v5 .portal-area-tile {
+  min-height: 98px;
+}
+
+.portal-navigation-v5 .portal-selected-area {
+  background:
+    radial-gradient(circle at 100% 0%, hsl(var(--primary) / .075), transparent 38%),
+    rgba(255,255,255,.014);
+}
+
+.portal-topbar-v5 {
+  background:
+    linear-gradient(90deg, rgba(35,45,42,.97), rgba(22,29,27,.97)) !important;
+  box-shadow:
+    0 12px 32px rgba(0,0,0,.22),
+    inset 0 -1px rgba(255,255,255,.035);
+}
+
+.portal-topbar-v5 form > div {
+  min-height: 44px;
+  border-radius: 14px !important;
+  background: rgba(0,0,0,.26) !important;
+}
+
+.portal-page-v5 {
+  background:
+    radial-gradient(circle at 55% -10%, hsl(var(--primary) / .035), transparent 24%);
+}
+
+.portal-content {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / .28) transparent;
+}
+
+.portal-content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.portal-content::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: hsl(var(--primary) / .22);
+}
+
+@media (max-width: 1279px) {
+  .portal-topbar-v5 {
+    height: 70px !important;
+  }
+}
+
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V6 — LAYOUT ORIGINAL POR CATEGORIAS
+   ========================================================= */
+
+.layout-v6-shell {
+  background:
+    radial-gradient(circle at 75% 0%, rgba(16, 185, 129, .055), transparent 30%),
+    linear-gradient(145deg, #15191c, #101417 58%, #171b1e);
+}
+
+.layout-v6-sidebar {
+  background:
+    linear-gradient(180deg, rgba(6, 15, 12, .99), rgba(5, 12, 10, .985)) !important;
+  border-right-color: rgba(255,255,255,.075) !important;
+  box-shadow:
+    8px 0 40px rgba(0,0,0,.42),
+    inset -1px 0 rgba(255,255,255,.025) !important;
+}
+
+.layout-v6-brand {
+  min-height: 78px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(16,185,129,.11), transparent 34%),
+    linear-gradient(135deg, rgba(255,255,255,.025), transparent 58%);
+}
+
+.layout-v6-brand::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(16,185,129,.42),
+      rgba(234,179,8,.22),
+      transparent
+    );
+}
+
+.layout-v6-nav {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16,185,129,.28) transparent;
+}
+
+.layout-v6-nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+.layout-v6-nav::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(16,185,129,.24);
+}
+
+.layout-v6-nav > div > div {
+  transition:
+    border-color .22s ease,
+    background-color .22s ease,
+    box-shadow .22s ease,
+    transform .22s ease;
+}
+
+.layout-v6-nav > div > div:hover {
+  border-color: rgba(255,255,255,.09);
+}
+
+.layout-v6-section {
+  min-height: 56px;
+}
+
+.layout-v6-nav > div > div:has(.layout-v6-section.bg-primary\/\[0\.055\]) {
+  border-color: hsl(var(--primary) / .18) !important;
+  background:
+    linear-gradient(
+      90deg,
+      hsl(var(--primary) / .035),
+      rgba(255,255,255,.008)
+    ) !important;
+  box-shadow:
+    inset 3px 0 hsl(var(--primary) / .58),
+    0 12px 34px rgba(0,0,0,.12);
+}
+
+.layout-v6-nav a {
+  border-radius: 11px !important;
+}
+
+.layout-v6-nav a:hover {
+  transform: translateX(2px);
+}
+
+.layout-v6-nav a[aria-current="page"] {
+  box-shadow:
+    inset 3px 0 hsl(var(--primary) / .72),
+    0 9px 26px rgba(0,0,0,.18);
+}
+
+@media (max-height: 850px) {
+  .layout-v6-section {
+    min-height: 50px;
+  }
+
+  .layout-v6-nav {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .layout-v6-sidebar {
+    box-shadow: 18px 0 68px rgba(0,0,0,.62) !important;
+  }
+}
+
+/* =========================================================
+   GNR PORTAL PROFISSIONAL V7 — POLIMENTO GLOBAL
+   ========================================================= */
+
+:root {
+  --v7-radius-xl: 18px;
+  --v7-radius-lg: 14px;
+  --v7-line: rgba(255,255,255,.085);
+  --v7-panel: rgba(6,16,12,.91);
+  --v7-panel-soft: rgba(255,255,255,.025);
+  --v7-shadow: 0 28px 90px rgba(0,0,0,.38);
+}
+
+.portal-page {
+  animation: portal-v7-page-enter .34s ease both;
+}
+
+@keyframes portal-v7-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.portal-page section,
+.portal-page article,
+.portal-page aside {
+  scroll-margin-top: 96px;
+}
+
+.portal-page button,
+.portal-page a,
+.portal-page input,
+.portal-page textarea,
+.portal-page select {
+  outline: none;
+}
+
+.portal-page button:focus-visible,
+.portal-page a:focus-visible,
+.portal-page input:focus-visible,
+.portal-page textarea:focus-visible,
+.portal-page select:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--primary) / .35);
+}
+
+/* Store */
+.portal-v7-store {
+  --store-accent: #f4cf49;
+}
+
+.portal-v7-store-hero {
+  isolation: isolate;
+  box-shadow:
+    0 34px 110px rgba(0,0,0,.46),
+    inset 0 1px rgba(255,255,255,.055) !important;
+}
+
+.portal-v7-store-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  border: 1px solid rgba(244,207,73,.10);
+  background: linear-gradient(135deg, rgba(255,255,255,.025), transparent 42%);
+}
+
+.portal-v7-store [class*="rounded-[2."] {
+  border-radius: var(--v7-radius-xl) !important;
+}
+
+.portal-v7-store button,
+.portal-v7-store a {
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    background-color .22s ease,
+    box-shadow .22s ease;
+}
+
+.portal-v7-store button:hover:not(:disabled),
+.portal-v7-store a:hover {
+  transform: translateY(-1px);
+}
+
+.portal-v7-store img {
+  image-rendering: auto;
+}
+
+.portal-v7-store input[type="search"],
+.portal-v7-store input[type="text"],
+.portal-v7-store select {
+  min-height: 44px;
+  border-color: rgba(255,255,255,.10);
+  background: rgba(0,0,0,.24);
+}
+
+/* Dashboard / Home */
+.portal-v7-dashboard > section,
+.portal-v7-home > section {
+  border-color: var(--v7-line);
+}
+
+.portal-v7-dashboard .glass,
+.portal-v7-home article,
+.portal-v7-home aside {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.035),
+    0 18px 52px rgba(0,0,0,.20);
+}
+
+.portal-v7-dashboard .glass:hover,
+.portal-v7-home article:hover {
+  border-color: hsl(var(--primary) / .18);
+}
+
+.portal-v7-dashboard [class*="rounded-[2."],
+.portal-v7-home [class*="rounded-[2."] {
+  border-radius: var(--v7-radius-xl) !important;
+}
+
+.portal-v7-dashboard table,
+.portal-v7-settings table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.portal-v7-dashboard thead th,
+.portal-v7-settings thead th {
+  background: rgba(255,255,255,.025);
+  color: rgba(255,255,255,.42);
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  font-size: 9px;
+}
+
+.portal-v7-dashboard tbody tr,
+.portal-v7-settings tbody tr {
+  transition: background-color .18s ease;
+}
+
+.portal-v7-dashboard tbody tr:hover,
+.portal-v7-settings tbody tr:hover {
+  background: rgba(255,255,255,.025);
+}
+
+/* Settings */
+.portal-v7-settings > section {
+  border-radius: var(--v7-radius-xl) !important;
+  box-shadow: var(--v7-shadow);
+}
+
+.portal-v7-settings input,
+.portal-v7-settings textarea,
+.portal-v7-settings select {
+  border-radius: 11px !important;
+  background: rgba(0,0,0,.22) !important;
+}
+
+.portal-v7-settings [role="tablist"] {
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.18);
+  padding: 5px;
+}
+
+/* Social customization */
+.portal-v7-customization-hero {
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 24px 80px rgba(0,0,0,.34),
+    inset 0 1px rgba(255,255,255,.04);
+}
+
+.portal-v7-customization-hero::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -90px;
+  top: -110px;
+  border-radius: 999px;
+  background: hsl(var(--primary) / .12);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.portal-v7-customization-slot {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.03),
+    0 18px 55px rgba(0,0,0,.22);
+}
+
+.portal-v7-customization-slot > div:first-child {
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(255,255,255,.075);
+}
+
+.portal-v7-customization-slot button {
+  position: relative;
+  overflow: hidden;
+  border-radius: 13px !important;
+}
+
+.portal-v7-customization-slot button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.025), transparent 45%);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.portal-v7-customization-slot button:hover::after {
+  opacity: 1;
+}
+
+.portal-v7-preview-shell {
+  box-shadow:
+    0 30px 110px rgba(0,0,0,.52),
+    inset 0 1px rgba(255,255,255,.045) !important;
+}
+
+.portal-v7-preview-shell::before {
+  content: "PREVIEW AO VIVO";
+  position: absolute;
+  z-index: 30;
+  top: 14px;
+  right: 14px;
+  border: 1px solid hsl(var(--primary) / .24);
+  border-radius: 999px;
+  background: rgba(0,0,0,.54);
+  padding: 6px 10px;
+  color: hsl(var(--primary));
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: .16em;
+  backdrop-filter: blur(12px);
+}
+
+.portal-v7-preview-shell {
+  position: relative;
+}
+
+.portal-v7-social-store article,
+.portal-v7-social-store section {
+  border-radius: var(--v7-radius-lg) !important;
+}
+
+/* Consistent empty states and loaders */
+.portal-empty-state {
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(255,255,255,.10);
+  border-radius: var(--v7-radius-xl);
+  background: rgba(255,255,255,.015);
+  padding: 32px;
+  text-align: center;
+}
+
+.portal-skeleton {
+  overflow: hidden;
+  position: relative;
+  background: rgba(255,255,255,.035);
+}
+
+.portal-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.055), transparent);
+  animation: portal-v7-skeleton 1.45s infinite;
+}
+
+@keyframes portal-v7-skeleton {
+  100% { transform: translateX(100%); }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .portal-v7-store-hero,
+  .portal-v7-settings > section,
+  .portal-v7-preview-shell,
+  .portal-v7-customization-hero,
+  .portal-v7-customization-slot {
+    border-radius: 14px !important;
+  }
+
+  .portal-v7-store h1,
+  .portal-v7-settings h1 {
+    font-size: clamp(2.2rem, 11vw, 3.2rem) !important;
+  }
+
+  .portal-v7-preview {
+    position: static !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-page,
+  .portal-v7-store button,
+  .portal-v7-store a,
+  .portal-v7-customization-slot button {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   GNR PORTAL V8.1 — TEMAS GLOBAIS SEM CORES FIXAS
+   ========================================================= */
+
+html[data-site-theme],
+html[data-site-theme] body,
+html[data-site-theme] #root,
+html[data-site-theme] .site-theme-root {
+  min-height: 100%;
+  background: var(--site-theme-page-background) !important;
+  background-attachment: fixed !important;
+  color: hsl(var(--foreground));
+}
+
+html[data-site-theme] .site-theme-root {
+  position: relative;
+  isolation: isolate;
+}
+
+html[data-site-theme] .site-theme-root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--site-theme-decoration);
+  opacity: .68;
+}
+
+html[data-site-theme] .layout-v6-shell,
+html[data-site-theme] .portal-shell,
+html[data-site-theme] .portal-main,
+html[data-site-theme] .portal-content,
+html[data-site-theme] .portal-page,
+html[data-site-theme] main {
+  background-color: transparent !important;
+}
+
+html[data-site-theme] .layout-v6-shell,
+html[data-site-theme] .portal-shell {
+  background: var(--site-theme-page-background) !important;
+}
+
+html[data-site-theme] .portal-main,
+html[data-site-theme] main {
+  background: var(--site-theme-main-background) !important;
+}
+
+html[data-site-theme] .theme-sidebar,
+html[data-site-theme] .layout-v6-sidebar,
+html[data-site-theme] .portal-sidebar {
+  background: var(--site-theme-sidebar-background) !important;
+  border-color: var(--site-theme-border) !important;
+}
+
+html[data-site-theme] .theme-topbar,
+html[data-site-theme] .portal-topbar {
+  background: var(--site-theme-topbar-background) !important;
+  border-color: var(--site-theme-border) !important;
+}
+
+html[data-site-theme] .theme-panel,
+html[data-site-theme] .theme-modal,
+html[data-site-theme] .theme-popover,
+html[data-site-theme] .theme-content-surface,
+html[data-site-theme] .theme-page-shell {
+  background: var(--site-theme-panel-background) !important;
+  border-color: var(--site-theme-border) !important;
+}
+
+html[data-site-theme] .theme-popover,
+html[data-site-theme] .theme-modal {
+  box-shadow:
+    0 32px 120px rgba(0,0,0,.72),
+    0 0 42px var(--site-theme-glow) !important;
+}
+
+html[data-site-theme] .theme-player {
+  background: var(--site-theme-player-background) !important;
+  border-color: var(--site-theme-border) !important;
+  box-shadow:
+    0 24px 80px rgba(0,0,0,.58),
+    0 0 36px var(--site-theme-glow) !important;
+}
+
+html[data-site-theme] .theme-button-surface {
+  background: color-mix(in srgb, hsl(var(--card)) 88%, transparent) !important;
+  border-color: var(--site-theme-border) !important;
+}
+
+/* Shadcn and generic components */
+html[data-site-theme] [role="dialog"],
+html[data-site-theme] [role="menu"],
+html[data-site-theme] [role="listbox"],
+html[data-site-theme] [data-radix-popper-content-wrapper] > div,
+html[data-site-theme] [data-state][class*="bg-popover"],
+html[data-site-theme] [class*="bg-card"] {
+  background: var(--site-theme-panel-background) !important;
+  border-color: var(--site-theme-border) !important;
+}
+
+html[data-site-theme] input,
+html[data-site-theme] textarea,
+html[data-site-theme] select,
+html[data-site-theme] [role="combobox"] {
+  background-color: color-mix(in srgb, hsl(var(--background)) 74%, transparent) !important;
+  border-color: var(--site-theme-border) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+html[data-site-theme] input:focus,
+html[data-site-theme] textarea:focus,
+html[data-site-theme] select:focus,
+html[data-site-theme] [role="combobox"]:focus {
+  border-color: hsl(var(--primary) / .58) !important;
+  box-shadow: 0 0 0 3px hsl(var(--primary) / .10) !important;
+}
+
+html[data-site-theme] table,
+html[data-site-theme] thead,
+html[data-site-theme] tbody,
+html[data-site-theme] tr,
+html[data-site-theme] td,
+html[data-site-theme] th {
+  border-color: var(--site-theme-border) !important;
+}
+
+html[data-site-theme] thead {
+  background: color-mix(in srgb, hsl(var(--card)) 72%, transparent) !important;
+}
+
+html[data-site-theme] tbody tr:hover {
+  background: hsl(var(--primary) / .045) !important;
+}
+
+/* Override common fixed green/black surfaces used throughout pages */
+html[data-site-theme] [class*="bg-[#020"],
+html[data-site-theme] [class*="bg-[#030"],
+html[data-site-theme] [class*="bg-[#040"],
+html[data-site-theme] [class*="bg-[#050"],
+html[data-site-theme] [class*="bg-[#060"],
+html[data-site-theme] [class*="bg-[#070"],
+html[data-site-theme] [class*="bg-[#080"],
+html[data-site-theme] [class*="bg-[#090"],
+html[data-site-theme] [class*="bg-[#0a0"],
+html[data-site-theme] [class*="bg-[#0b0"] {
+  background-color: transparent !important;
+  background-image: var(--site-theme-panel-background) !important;
+  border-color: var(--site-theme-border) !important;
+}
+
+html[data-site-theme] [class*="border-emerald"],
+html[data-site-theme] [class*="border-green"] {
+  border-color: hsl(var(--primary) / .30) !important;
+}
+
+html[data-site-theme] [class*="text-emerald"],
+html[data-site-theme] [class*="text-green"] {
+  color: hsl(var(--primary)) !important;
+}
+
+html[data-site-theme] [class*="bg-emerald"],
+html[data-site-theme] [class*="bg-green"] {
+  background-color: hsl(var(--primary) / .12) !important;
+}
+
+html[data-site-theme] button[class*="bg-primary"],
+html[data-site-theme] a[class*="bg-primary"] {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border-color: hsl(var(--primary) / .45) !important;
+}
+
+html[data-site-theme] [class*="shadow-[0_0_"] {
+  --tw-shadow-color: var(--site-theme-glow) !important;
+}
+
+/* Specific main modules */
+html[data-site-theme] .portal-v7-store,
+html[data-site-theme] .portal-home-page,
+html[data-site-theme] .portal-profile-page,
+html[data-site-theme] .portal-v7-dashboard,
+html[data-site-theme] .portal-v7-settings {
+  background: transparent !important;
+}
+
+html[data-site-theme] .portal-v7-store > section,
+html[data-site-theme] .portal-home-page > section,
+html[data-site-theme] .portal-profile-page > section,
+html[data-site-theme] .portal-v7-dashboard > section,
+html[data-site-theme] .portal-v7-settings > section {
+  border-color: var(--site-theme-border) !important;
+}
+
+/* Theme-specific layouts now also affect density and shape */
+html[data-site-layout="compact"] .portal-page {
+  max-width: 1780px !important;
+}
+
+html[data-site-layout="compact"] .portal-page section,
+html[data-site-layout="compact"] .portal-page article {
+  border-radius: 12px !important;
+}
+
+html[data-site-layout="ceremonial"] .portal-page section,
+html[data-site-layout="ceremonial"] .portal-page article {
+  border-radius: 20px !important;
+  box-shadow:
+    inset 0 1px hsl(var(--primary) / .10),
+    0 20px 70px rgba(0,0,0,.26) !important;
+}
+
+html[data-site-layout="intel"] .portal-page section,
+html[data-site-layout="intel"] .portal-page article {
+  border-radius: 10px !important;
+}
+
+html[data-site-layout="tactical"] .portal-page section,
+html[data-site-layout="tactical"] .portal-page article {
+  border-radius: 8px !important;
+}
+
+html[data-site-layout="minimal"] .portal-page section,
+html[data-site-layout="minimal"] .portal-page article {
+  box-shadow: none !important;
+}

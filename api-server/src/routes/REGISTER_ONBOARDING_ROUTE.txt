@@ -1,0 +1,15 @@
+No teu ficheiro de registo de rotas, adiciona:
+
+import onboardingRouter from "./onboarding";
+
+router.use("/onboarding", onboardingRouter);
+
+Se registares diretamente no app.ts:
+
+import onboardingRouter from "./routes/onboarding";
+
+app.use("/api/onboarding", onboardingRouter);
+
+A URL final tem de ser:
+
+POST /api/onboarding/complete

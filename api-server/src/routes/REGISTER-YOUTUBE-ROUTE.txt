@@ -1,0 +1,13 @@
+No teu `api-server/src/routes/index.ts`:
+
+1. Importa:
+
+import youtubeRoutes from "./youtube";
+
+2. Regista:
+
+router.use("/youtube", youtubeRoutes);
+
+Se o index já está montado em `/api`, a URL final fica:
+
+GET /api/youtube/search?q=shakira

@@ -1,0 +1,6 @@
+Adicionar ao server/models/index.ts:
+
+export { default as StoreInventory } from "./StoreInventory";
+export { default as StoreTransaction } from "./StoreTransaction";
+export { default as StorePurchaseLog } from "./StorePurchaseLog";
+export { default as StoreProduct } from "./StoreProduct";

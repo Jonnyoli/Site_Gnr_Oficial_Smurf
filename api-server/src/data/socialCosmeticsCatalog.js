@@ -1,0 +1,146 @@
+export const SOCIAL_COSMETICS_CATALOG = [
+  {
+    id: "mural-gioe-night",
+    name: "Quartel Tático Noturno",
+    type: "MURAL_BACKGROUND",
+    rarity: "LEGENDARY",
+    price: 6500,
+    imageUrl: "/Store/backgrounds/GIOE.png",
+    description: "Fundo escuro inspirado em operações especiais.",
+    tags: ["GIOE", "Tático", "Noturno"],
+  },
+  {
+    id: "mural-paleto-sunset",
+    name: "Paleto ao Pôr do Sol",
+    type: "MURAL_BACKGROUND",
+    rarity: "EPIC",
+    price: 4200,
+    imageUrl: "/Store/backgrounds/patrulha.png",
+    description: "Paisagem premium da zona de Paleto.",
+    tags: ["Paleto", "Paisagem"],
+  },
+  {
+    id: "mural-command-room",
+    name: "Sala de Comando",
+    type: "MURAL_BACKGROUND",
+    rarity: "EXCLUSIVE",
+    price: 8000,
+    imageUrl: "/Store/backgrounds/CD.png",
+    description: "Ambiente reservado ao comando e direção.",
+    tags: ["Comando", "Premium"],
+  },
+  {
+    id: "comment-carbon",
+    name: "Comentário Carbono",
+    type: "COMMENT_STYLE",
+    rarity: "RARE",
+    price: 2200,
+    style: {
+      cardClass:
+        "border-slate-400/20 bg-gradient-to-br from-slate-950/95 to-slate-900/80 shadow-[0_18px_55px_rgba(0,0,0,0.35)]",
+      accentClass: "text-slate-200",
+    },
+    description: "Cartão escuro com textura visual de carbono.",
+  },
+  {
+    id: "comment-gold-command",
+    name: "Comentário Dourado",
+    type: "COMMENT_STYLE",
+    rarity: "LEGENDARY",
+    price: 7000,
+    style: {
+      cardClass:
+        "border-amber-300/30 bg-gradient-to-br from-amber-950/75 to-black/90 shadow-[0_0_35px_rgba(251,191,36,0.13)]",
+      accentClass: "text-amber-300",
+    },
+    description: "Estilo institucional com brilho dourado discreto.",
+  },
+  {
+    id: "comment-neon-green",
+    name: "Comentário Neon Guarda",
+    type: "COMMENT_STYLE",
+    rarity: "EPIC",
+    price: 3900,
+    style: {
+      cardClass:
+        "border-emerald-400/30 bg-gradient-to-br from-emerald-950/70 to-black/90 shadow-[0_0_32px_rgba(52,211,153,0.12)]",
+      accentClass: "text-emerald-300",
+    },
+    description: "Visual moderno em verde institucional.",
+  },
+  {
+    id: "signature-honra-dever",
+    name: "Honra · Dever · Lealdade",
+    type: "SIGNATURE",
+    rarity: "EPIC",
+    price: 3200,
+    text: "Honra · Dever · Lealdade",
+    description: "Assinatura institucional para comentários.",
+  },
+  {
+    id: "signature-operational",
+    name: "Sempre Operacional",
+    type: "SIGNATURE",
+    rarity: "RARE",
+    price: 1800,
+    text: "Sempre Operacional",
+    description: "Assinatura curta para militares ativos.",
+  },
+  {
+    id: "reaction-pack-gnr",
+    name: "Pack Reações GNR",
+    type: "REACTION_PACK",
+    rarity: "EPIC",
+    price: 3500,
+    reactions: [
+      { key: "PATROL", emoji: "🚓", label: "Patrulha" },
+      { key: "MEDAL", emoji: "🎖️", label: "Mérito" },
+      { key: "EAGLE", emoji: "🦅", label: "Águia" },
+      { key: "RADIO", emoji: "📡", label: "Comunicação" },
+    ],
+    description: "Reações temáticas para o mural.",
+  },
+  {
+    id: "social-badge-veteran",
+    name: "Veterano",
+    type: "SOCIAL_BADGE",
+    rarity: "LEGENDARY",
+    price: 6000,
+    icon: "🎖️",
+    description: "Emblema social de veterano.",
+  },
+  {
+    id: "social-badge-leader",
+    name: "Líder",
+    type: "SOCIAL_BADGE",
+    rarity: "EPIC",
+    price: 4200,
+    icon: "🛡️",
+    description: "Emblema social de liderança.",
+  },
+  {
+    id: "highlight-official-document",
+    name: "Destaque Documento Oficial",
+    type: "HIGHLIGHT_STYLE",
+    rarity: "EXCLUSIVE",
+    price: 7500,
+    styleClass:
+      "border-amber-300/30 bg-gradient-to-br from-[#251c08]/95 to-[#090805]/95 shadow-[0_0_50px_rgba(251,191,36,0.14)]",
+    description: "Estilo premium para comentário fixado.",
+  },
+  {
+    id: "effect-soft-glow",
+    name: "Entrada Brilho Suave",
+    type: "ENTRY_EFFECT",
+    rarity: "RARE",
+    price: 2000,
+    effectClass: "animate-pulse",
+    description: "Efeito visual discreto para novidades do mural.",
+  },
+];
+
+export function findSocialCosmetic(itemId) {
+  return SOCIAL_COSMETICS_CATALOG.find(
+    (item) => item.id === itemId,
+  ) || null;
+}
